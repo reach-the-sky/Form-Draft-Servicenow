@@ -9,53 +9,53 @@
         <name>FormDraftAjax</name>
         <script><![CDATA[var FormDraftAjax = Class.create();
 FormDraftAjax.prototype = Object.extendsObject(AbstractAjaxProcessor, {
-  createDraft: function() {
-    var tableName = this.getParameter('sysparm_tablename');
-    var fields = this.getParameter('sysparm_fields').split(',');
-	var field_value = JSON.parse(this.getParameter("sysparam_field_values"));
-	var record_name = this.getParameter("sysparam_record_name");
 
-	if (this.isNameDuplicate(record_name, tableName)) {
-		return "duplicate";
-	}
+	createDraft: function() {
+		var tableName = this.getParameter('sysparm_tablename');
+		var fields = this.getParameter('sysparm_fields').split(',');
+		var field_value = JSON.parse(this.getParameter("sysparam_field_values"));
+		var record_name = this.getParameter("sysparam_record_name");
 
-    var draftGR = new GlideRecord('form_draft');
-    draftGR.initialize();
+		if (this.isNameDuplicate(record_name, tableName)) {
+			return "duplicate";
+		}
 
-    // Set the values for the draft record
-    draftGR.setValue('tablename', tableName);
-    draftGR.setValue('created_by', gs.getUserID());
-	draftGR.setValue("name", record_name);
+		var draftGR = new GlideRecord('form_draft');
+		draftGR.initialize();
 
-    // Iterate through each field and store its name and value
-    for (var i = 0; i < fields.length; i++) {
-      var field = fields[i];
-      var value = field_value[i];
+		// Set the values for the draft record
+		draftGR.setValue('tablename', tableName);
+		draftGR.setValue("name", record_name);
 
-      draftGR.setValue('field_name', field);
-      draftGR.setValue('field_value', value);
-      draftGR.insert();
-    }
+		// Iterate through each field and store its name and value
+		for (var i = 0; i < fields.length; i++) {
+			var field = fields[i];
+			var value = field_value[i];
 
-    return 'success';
-  },
+			draftGR.setValue('field_name', field);
+			draftGR.setValue('field_value', value);
+			draftGR.insert();
+		}
 
-  isNameDuplicate: function(name, tableName) {
-	var draftGR = new GlideRecord('form_draft');
-	draftGR.addQuery("name", name);
-	draftGR.addQuery("tablename", tableName);
-	draftGR.addQuery("created_by", gs.getUserID());
-	draftGR.query();
+		return 'success';
+	},
 
-	return draftGR.hasNext();
-  },
+	isNameDuplicate: function(name, tableName) {
+		var draftGR = new GlideRecord('form_draft');
+		draftGR.addQuery("name", name);
+		draftGR.addQuery("tablename", tableName);
+		draftGR.addQuery("sys_created_by", gs.getUserName());
+		draftGR.query();
 
-  loadDraftNames: function() {
+		return draftGR.hasNext();
+	},
+
+	loadDraftNames: function() {
 		var tablename = this.getParameter('sysparm_tablename');
 		var draftNames = [];
 
 		var draftGR = new GlideRecord("form_draft");
-		draftGR.addQuery("created_by", gs.getUserID());
+		draftGR.addQuery("sys_created_by", gs.getUserName());
 
 		if(tablename != null && tablename != "")
 			draftGR.addQuery("tablename", tablename);
@@ -78,7 +78,7 @@ FormDraftAjax.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 		var fields = {};
 
 		var draftGR = new GlideRecord("form_draft");
-		draftGR.addQuery("created_by", gs.getUserID());
+		draftGR.addQuery("sys_created_by", gs.getUserName());
 		draftGR.addQuery("tablename", tablename);
 		draftGR.addQuery("name", name);
 		draftGR.query();
@@ -89,19 +89,20 @@ FormDraftAjax.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 
 		return JSON.stringify(fields);
 	},
+	
   type: 'FormDraftAjax'
 });]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
         <sys_created_on>2023-06-24 13:44:38</sys_created_on>
         <sys_id>aabfe23a83a721102f5a4ef16daad3c3</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_mod_count>4</sys_mod_count>
         <sys_name>FormDraftAjax</sys_name>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_script_include_aabfe23a83a721102f5a4ef16daad3c3</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-24 13:44:38</sys_updated_on>
+        <sys_updated_on>2023-06-25 05:01:31</sys_updated_on>
     </sys_script_include>
 </record_update>
