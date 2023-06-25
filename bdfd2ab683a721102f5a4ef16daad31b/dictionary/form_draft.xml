@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?><database>
+    <element db_object_id="3e0eeab683a721102f5a4ef16daad3dc" label="Form Draft" max_length="40" name="form_draft" type="collection">
+        <element label="Field name" max_length="200" name="field_name" type="string"/>
+        <element label="Field Value" max_length="10000" name="field_value" type="string_full_utf8"/>
+        <element label="Name" max_length="50" name="name" type="string"/>
+        <element label="Tablename" max_length="200" name="tablename" type="string"/>
+        <element label="Userid" max_length="200" name="userid" type="string"/>
+    </element>
+</database>

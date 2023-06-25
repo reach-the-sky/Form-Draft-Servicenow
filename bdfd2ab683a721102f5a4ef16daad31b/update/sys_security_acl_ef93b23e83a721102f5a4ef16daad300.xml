@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_security_acl">
+    <sys_security_acl action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <admin_overrides>true</admin_overrides>
+        <advanced>false</advanced>
+        <condition/>
+        <description/>
+        <name>global_draft_select_prompt</name>
+        <operation display_value="read">read</operation>
+        <script/>
+        <sys_class_name>sys_security_acl</sys_class_name>
+        <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
+        <sys_created_on>2023-06-24 13:53:11</sys_created_on>
+        <sys_id>ef93b23e83a721102f5a4ef16daad300</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>global_draft_select_prompt</sys_name>
+        <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
+        <sys_update_name>sys_security_acl_ef93b23e83a721102f5a4ef16daad300</sys_update_name>
+        <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
+        <sys_updated_on>2023-06-24 13:53:11</sys_updated_on>
+        <type display_value="ui_page">ui_page</type>
+    </sys_security_acl>
+</record_update>

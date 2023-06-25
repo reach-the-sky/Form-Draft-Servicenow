@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update>
+    <sys_dictionary action="INSERT_OR_UPDATE" element="field_value" table="form_draft">
+        <active>true</active>
+        <array>false</array>
+        <attributes/>
+        <audit>false</audit>
+        <calculation><![CDATA[(function calculatedFieldValue(current) {
+
+	// Add your code here
+	return '';  // return the calculated value
+
+})(current);]]></calculation>
+        <choice/>
+        <choice_field/>
+        <choice_table/>
+        <column_label>Field Value</column_label>
+        <comments/>
+        <create_roles/>
+        <default_value/>
+        <defaultsort/>
+        <delete_roles/>
+        <dependent/>
+        <dependent_on_field/>
+        <display>false</display>
+        <dynamic_creation>false</dynamic_creation>
+        <dynamic_creation_script/>
+        <dynamic_default_value/>
+        <dynamic_ref_qual/>
+        <element>field_value</element>
+        <element_reference>false</element_reference>
+        <foreign_database/>
+        <formula/>
+        <function_definition/>
+        <function_field>false</function_field>
+        <internal_type display_value="">string_full_utf8</internal_type>
+        <mandatory>false</mandatory>
+        <max_length>10000</max_length>
+        <name>form_draft</name>
+        <next_element/>
+        <primary>false</primary>
+        <read_only>false</read_only>
+        <read_roles/>
+        <reference/>
+        <reference_cascade_rule/>
+        <reference_floats>false</reference_floats>
+        <reference_key/>
+        <reference_qual/>
+        <reference_qual_condition/>
+        <reference_type/>
+        <spell_check>false</spell_check>
+        <staged>false</staged>
+        <sys_class_name>sys_dictionary</sys_class_name>
+        <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
+        <sys_created_on>2023-06-24 13:32:35</sys_created_on>
+        <sys_name>Field Value</sys_name>
+        <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
+        <sys_update_name>sys_dictionary_form_draft_field_value</sys_update_name>
+        <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
+        <sys_updated_on>2023-06-24 13:32:35</sys_updated_on>
+        <table_reference>false</table_reference>
+        <text_index>false</text_index>
+        <unique>false</unique>
+        <use_dependent_field>false</use_dependent_field>
+        <use_dynamic_default>false</use_dynamic_default>
+        <use_reference_qualifier>simple</use_reference_qualifier>
+        <virtual>false</virtual>
+        <virtual_type>script</virtual_type>
+        <widget/>
+        <write_roles/>
+        <xml_view>false</xml_view>
+    </sys_dictionary>
+    <sys_claim action="INSERT_OR_UPDATE">
+        <claim_owner_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</claim_owner_scope>
+        <claim_timestamp>188f0c2f0200000001</claim_timestamp>
+        <metadata_update_name>sys_dictionary_form_draft_field_value</metadata_update_name>
+        <previous_claim_app_version>1.0.0</previous_claim_app_version>
+        <previous_claim_name>Form Draft</previous_claim_name>
+        <previous_claim_scope>bdfd2ab683a721102f5a4ef16daad31b</previous_claim_scope>
+        <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
+        <sys_created_on>2023-06-25 04:14:47</sys_created_on>
+        <sys_id>28d8b14b832361102f5a4ef16daad3bc</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
+        <sys_updated_on>2023-06-25 04:14:47</sys_updated_on>
+    </sys_claim>
+</record_update>
