@@ -86,6 +86,8 @@ FormDraftAjax.prototype = Object.extendsObject(AbstractAjaxProcessor, {
 		while(draftGR.next()) {
 			fields[draftGR.getValue("field_name")] = draftGR.getValue("field_value");
 		}
+		
+// 		draftGR.deleteMultiple();
 
 		return JSON.stringify(fields);
 	},
@@ -96,13 +98,13 @@ FormDraftAjax.prototype = Object.extendsObject(AbstractAjaxProcessor, {
         <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
         <sys_created_on>2023-06-24 13:44:38</sys_created_on>
         <sys_id>aabfe23a83a721102f5a4ef16daad3c3</sys_id>
-        <sys_mod_count>4</sys_mod_count>
+        <sys_mod_count>6</sys_mod_count>
         <sys_name>FormDraftAjax</sys_name>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_script_include_aabfe23a83a721102f5a4ef16daad3c3</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-25 05:01:31</sys_updated_on>
+        <sys_updated_on>2023-06-27 09:53:37</sys_updated_on>
     </sys_script_include>
 </record_update>

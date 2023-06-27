@@ -8,16 +8,6 @@
 	GlideDialogWindow.get().destroy();
 }
 
-function deleteDraft() {
-// 	var selectedItem = document.getElementById('selectField').value;
-// 	var msg = "Delete " + selectItem + " draft record?";
-// 			g_modal.confirmDestroy("Confirmation", msg, function (ret) {
-// 				alert(ret);
-// 			});
-	// var callbackFunc = GlideDialogWindow.get().getPreference('onDraftDelete');
-	// callbackFunc(selectedItem);
-}
-
 function cancelDialog() {
 	GlideDialogWindow.get().destroy();
 }]]></client_script>
@@ -32,11 +22,6 @@ function cancelDialog() {
     </g:evaluate>
 
     <g:ui_table>
-		<!-- <tr>
-            <td colspan="2" align="right">
-                <img src="sn_flow_diagram_delete.png" alt="${gs.getMessage('Delete')}" onclick="deleteDraft()" width="20" height="20"/>
-            </td>
-	   </tr> -->
         <tr>
             <td style="padding:20px">
                 <select id="selectField" size="16" name="selectField" style="width:1000px; padding:10px; background-color:#F5F5F5">
@@ -68,13 +53,13 @@ function cancelDialog() {
         <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
         <sys_created_on>2023-06-24 13:53:11</sys_created_on>
         <sys_id>7c433efa83a721102f5a4ef16daad3e3</sys_id>
-        <sys_mod_count>33</sys_mod_count>
+        <sys_mod_count>35</sys_mod_count>
         <sys_name>draft_select_prompt</sys_name>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_ui_page_7c433efa83a721102f5a4ef16daad3e3</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-27 09:08:33</sys_updated_on>
+        <sys_updated_on>2023-06-27 09:31:26</sys_updated_on>
     </sys_ui_page>
 </record_update>
