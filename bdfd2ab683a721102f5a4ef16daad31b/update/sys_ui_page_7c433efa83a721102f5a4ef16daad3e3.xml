@@ -28,23 +28,23 @@ function cancelDialog() {
 <j:jelly xmlns:j="jelly:core" xmlns:g="glide" xmlns:j2="null" xmlns:g2="glide.ui.template" xmlns:g3="null" xmlns:g4="null">
 
 	<g:evaluate>
-        var items = RP.getWindowProperties().get('items').split(",");
+		var items = RP.getWindowProperties().get('items').split(",");
     </g:evaluate>
 
     <g:ui_table>
-		<tr>
+		<!-- <tr>
             <td colspan="2" align="right">
                 <img src="sn_flow_diagram_delete.png" alt="${gs.getMessage('Delete')}" onclick="deleteDraft()" width="20" height="20"/>
             </td>
-        </tr>
+	   </tr> -->
         <tr>
-            <td>
-                <select id="selectField" size="6" name="selectField" style="width:300px;">
+            <td style="padding:20px">
+                <select id="selectField" size="16" name="selectField" style="width:1000px; padding:10px; background-color:#F5F5F5">
 					<j2:forEach var="item" items="$[items]">
 						<g2:evaluate jelly="true">
 							var draftName = jelly.item;
 						</g2:evaluate>
-						<option value="$[draftName]">$[draftName]</option>
+						<option value="$[draftName]" style="padding:5px; background-color:white">$[draftName]</option>
 					</j2:forEach>
                 </select>
             </td>
@@ -55,7 +55,7 @@ function cancelDialog() {
            </td>
         </tr>
         <tr>
-            <td colspan="2" align="right">
+            <td colspan="2" align="right" style="padding:5px">
                 <g:dialog_buttons_ok_cancel ok="selectItem();" />
             </td>
         </tr>
@@ -68,13 +68,13 @@ function cancelDialog() {
         <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
         <sys_created_on>2023-06-24 13:53:11</sys_created_on>
         <sys_id>7c433efa83a721102f5a4ef16daad3e3</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>33</sys_mod_count>
         <sys_name>draft_select_prompt</sys_name>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
         <sys_policy/>
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_ui_page_7c433efa83a721102f5a4ef16daad3e3</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-24 13:54:06</sys_updated_on>
+        <sys_updated_on>2023-06-27 09:08:33</sys_updated_on>
     </sys_ui_page>
 </record_update>
