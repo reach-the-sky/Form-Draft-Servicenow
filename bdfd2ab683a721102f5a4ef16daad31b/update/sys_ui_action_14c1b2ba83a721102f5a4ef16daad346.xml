@@ -32,33 +32,44 @@
         <order>-1000</order>
         <script><![CDATA[function loadDraft() {
 	var tableName = g_form.getTableName();
+	var draftNamesOffline = FormDraftClient.getLocalDraftNames(tableName);
 
 	var ga = new GlideAjax('FormDraftAjax');
 	ga.addParam('sysparm_name', 'loadDraftNames');
 	ga.addParam('sysparm_tablename', tableName);
 	ga.getXMLAnswer(function(draftNames) {
-			var gDialog = new GlideDialogWindow('draft_select_prompt');
-			gDialog.setTitle(getMessage("Select a draft to load: "));
-			gDialog.setPreference('items', draftNames);
-			gDialog.setPreference('onPromptComplete', complete);
-			gDialog.setPreference('onDraftDelete', deleteDraft);
-			gDialog.render();
-		});
+
+		var gDialog = new GlideDialogWindow('draft_select_prompt');
+		gDialog.setTitle(getMessage("Select a draft to load: "));
+		gDialog.setPreference('draftNames', draftNames);
+		gDialog.setPreference('draftNamesOffline', draftNamesOffline);
+		gDialog.setPreference('onPromptComplete', complete);
+		gDialog.render();
+	});
 	
-	function complete(setID) {
-		var ga = new GlideAjax('FormDraftAjax');
-		ga.addParam('sysparm_name', 'getDraftData');
-		ga.addParam('sysparm_tablename', tableName);
-		ga.addParam('sysparm_recordname', setID);
-		ga.getXMLAnswer(function(response) {
-			response = JSON.parse(response);
-			for (var key in response) {
-				g_form.setValue(key, response[key]);
+	function complete(setID, offline) {
+		if(!offline) {
+			var ga = new GlideAjax('FormDraftAjax');
+			ga.addParam('sysparm_name', 'getDraftData');
+			ga.addParam('sysparm_tablename', tableName);
+			ga.addParam('sysparm_recordname', setID);
+			ga.getXMLAnswer(function(response) {
+				response = JSON.parse(response);
+				for (var key in response) {
+					g_form.setValue(key, response[key]);
+					g_form.addDecoration(key, "icon-success", "Modified by '" + setID + "' draft");
+				}
+			});
+			g_form.addInfoMessage("Draft: '" + setID + "' is loaded into form and deleted.");
+		}
+		else {
+			var draftData = FormDraftClient.getLocalData(setID);
+			for (var key in draftData) {
+				g_form.setValue(key, draftData[key]);
 				g_form.addDecoration(key, "icon-success", "Modified by '" + setID + "' draft");
 			}
-		});
-		
-		g_form.addInfoMessage("Draft: '" + setID + "' is loaded into form and deleted.");
+			g_form.addInfoMessage("Draft: '" + setID + "' is loaded into form and deleted from local storage.");
+		}
 	}
 
 	function deleteDraft(selectItem) {
@@ -78,7 +89,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>14c1b2ba83a721102f5a4ef16daad346</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>18</sys_mod_count>
         <sys_name>Load Draft</sys_name>
         <sys_overrides/>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
@@ -86,7 +97,7 @@
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_ui_action_14c1b2ba83a721102f5a4ef16daad346</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-27 10:18:26</sys_updated_on>
+        <sys_updated_on>2023-06-29 11:24:18</sys_updated_on>
         <table>global</table>
         <ui11_compatible>false</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>

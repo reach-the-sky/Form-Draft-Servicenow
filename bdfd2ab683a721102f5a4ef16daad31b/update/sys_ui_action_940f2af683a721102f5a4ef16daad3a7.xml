@@ -59,7 +59,7 @@
 	gm.render();
   }
   else {
-	var draft_name = prompt("enter a draft name");
+	var draft_name = prompt("Enter draft name (offline]]>📵<![CDATA[):");
 	complete(draft_name);
   }
 
@@ -90,7 +90,7 @@
 	}
 	else {
 		FormDraftClient.setLocalData(tableName, value, JSON.stringify(field_data));
-		g_form.addInfoMessage("No internet, saved draft locally.");
+		g_form.addInfoMessage("No internet]]>📵<![CDATA[, saved draft locally.");
 	}
   }
   
@@ -112,7 +112,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>940f2af683a721102f5a4ef16daad3a7</sys_id>
-        <sys_mod_count>17</sys_mod_count>
+        <sys_mod_count>26</sys_mod_count>
         <sys_name>Create Draft</sys_name>
         <sys_overrides/>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
@@ -120,7 +120,7 @@
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_ui_action_940f2af683a721102f5a4ef16daad3a7</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-29 06:14:51</sys_updated_on>
+        <sys_updated_on>2023-06-29 11:24:51</sys_updated_on>
         <table>global</table>
         <ui11_compatible>false</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
