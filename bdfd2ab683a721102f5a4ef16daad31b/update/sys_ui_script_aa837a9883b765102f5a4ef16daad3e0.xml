@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_ui_script">
+    <sys_ui_script action="INSERT_OR_UPDATE">
+        <active>true</active>
+        <description/>
+        <global>true</global>
+        <ignore_in_now_experience>false</ignore_in_now_experience>
+        <name>FormDraftClient</name>
+        <script><![CDATA[var FormDraftClient = (function() {
+	return {
+		setLocalData: setLocalData,
+		getLocalData: getLocalData
+	};
+	
+	function setLocalData(tablename, key, value) {
+		window.localStorage.setItem(key, value);
+	}
+	
+	function getLocalData(tablename, key) {
+		return JSON.parse(window.localStorage.getItem(key));
+	}
+})();]]></script>
+        <script_name/>
+        <sys_class_name>sys_ui_script</sys_class_name>
+        <sys_created_by>kotnikrish.chaitanya@snc</sys_created_by>
+        <sys_created_on>2023-06-29 05:46:52</sys_created_on>
+        <sys_id>aa837a9883b765102f5a4ef16daad3e0</sys_id>
+        <sys_mod_count>3</sys_mod_count>
+        <sys_name>FormDraftClient</sys_name>
+        <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
+        <sys_update_name>sys_ui_script_aa837a9883b765102f5a4ef16daad3e0</sys_update_name>
+        <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
+        <sys_updated_on>2023-06-29 05:56:33</sys_updated_on>
+        <ui_type>0</ui_type>
+        <use_scoped_format>false</use_scoped_format>
+    </sys_ui_script>
+</record_update>

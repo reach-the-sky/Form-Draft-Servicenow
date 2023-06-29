@@ -31,6 +31,7 @@
         <onclick>createDraft()</onclick>
         <order>-1100</order>
         <script><![CDATA[function createDraft() {
+	
   // Get the current form record
   var tableName = g_form.getTableName();
 
@@ -39,45 +40,66 @@
 
   var fields_keys = [];
   var field_values = [];
+  var field_data = {};
 
   for(var i = 0; i < fields.length; i++) {
 	var value = g_form.getValue(fields[i]);
 	if(value != null && value != "") {
 		fields_keys.push(fields[i]);
 		field_values.push(value);
+		field_data[fields[i]] = value;
 	}
   }
 
-  var gm = new GlideModal("glide_prompt", true, 600);
-  gm.setTitle("Form Draft");
-  gm.setPreference("title", "Enter a name for draft: ");
-  gm.setPreference("onPromptComplete", complete);
-  gm.render();
+  if(navigator.onLine) {
+	var gm = new GlideModal("glide_prompt", true, 600);
+	gm.setTitle("Form Draft");
+	gm.setPreference("title", "Enter a name for draft: ");
+	gm.setPreference("onPromptComplete", complete);
+	gm.render();
+  }
+  else {
+	var draft_name = prompt("enter a draft name");
+	complete(draft_name);
+  }
 
   function complete(value) {
 
-	if(value == null || value == "") {
-		g_form.addErrorMessage("Add a unique name");
+	if(!isValidName(value)) {
+		g_form.addErrorMessage("Add valid name, don't add special characters");
 		return;
 	}
 
-
-	// Call the server-side script through AJAX
-	var ga = new GlideAjax('FormDraftAjax');
-	ga.addParam('sysparm_name', 'createDraft');
-	ga.addParam('sysparm_tablename', tableName);
-	ga.addParam('sysparm_fields', fields_keys.join(','));
-	ga.addParam("sysparam_field_values", JSON.stringify(field_values));
-	ga.addParam("sysparam_record_name", value);
-	ga.getXMLAnswer(function(response) {
-		if (response == 'success') {
-			g_form.addInfoMessage("Saved draft: " + value);
-		} else if(response == "duplicate") {
-			g_form.addErrorMessage("Duplicate draft name given");
-		} else {
-			g_form.addErrorMessage("Unable to save form as draft");
-		}
-	});
+	if(navigator.onLine){
+		// Call the server-side script through AJAX
+		var ga = new GlideAjax('FormDraftAjax');
+		ga.addParam('sysparm_name', 'createDraft');
+		ga.addParam('sysparm_tablename', tableName);
+		ga.addParam('sysparm_fields', fields_keys.join(','));
+		ga.addParam("sysparam_field_values", JSON.stringify(field_values));
+		ga.addParam("sysparam_record_name", value);
+		ga.getXMLAnswer(function(response) {
+			if (response == 'success') {
+				g_form.addInfoMessage("Saved draft: " + value);
+			} else if(response == "duplicate") {
+				g_form.addErrorMessage("Duplicate draft name given");
+			} else {
+				g_form.addInfoMessage("No internet, saved draft locally.");
+			}
+		});
+	}
+	else {
+		FormDraftClient.setLocalData(tableName, value, JSON.stringify(field_data));
+		g_form.addInfoMessage("No internet, saved draft locally.");
+	}
+  }
+  
+  function isValidName(value) {
+	
+	if(value == null || value == "")
+		return false;
+	var regex = /^[a-zA-Z0-9\s]+$/;
+	return regex.test(value);
   }
 }]]></script>
         <show_insert>true</show_insert>
@@ -90,7 +112,7 @@
         <sys_domain>global</sys_domain>
         <sys_domain_path>/</sys_domain_path>
         <sys_id>940f2af683a721102f5a4ef16daad3a7</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>17</sys_mod_count>
         <sys_name>Create Draft</sys_name>
         <sys_overrides/>
         <sys_package display_value="Form Draft" source="bdfd2ab683a721102f5a4ef16daad31b">bdfd2ab683a721102f5a4ef16daad31b</sys_package>
@@ -98,7 +120,7 @@
         <sys_scope display_value="Form Draft">bdfd2ab683a721102f5a4ef16daad31b</sys_scope>
         <sys_update_name>sys_ui_action_940f2af683a721102f5a4ef16daad3a7</sys_update_name>
         <sys_updated_by>kotnikrish.chaitanya@snc</sys_updated_by>
-        <sys_updated_on>2023-06-24 13:49:11</sys_updated_on>
+        <sys_updated_on>2023-06-29 06:14:51</sys_updated_on>
         <table>global</table>
         <ui11_compatible>false</ui11_compatible>
         <ui16_compatible>false</ui16_compatible>
